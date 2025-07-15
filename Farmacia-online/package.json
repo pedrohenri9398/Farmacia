@@ -17,9 +17,11 @@
     "tinyglobby": "^0.2.14",
     "vite": "^7.0.4"
   },
-  "scripts": {
+ "scripts": {
+    "start": "vite",          // Script para iniciar o servidor de desenvolvimento do frontend (Vite)
+    "backend": "node server.js", // Script para iniciar o servidor do backend
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
