@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // --- Configuração do Supabase ---
 // SUBSTITUA PELAS SUAS CHAVES DO SUPABASE
-const SUPABASE_URL = 'SUA_URL_SUPABASE_AQUI'; // Ex: https://your-project-ref.supabase.co
+const SUPABASE_URL = 'https://vovyubntbeesdwibrdlf.supabase.co'; // Ex: https://your-project-ref.supabase.co
 const SUPABASE_ANON_KEY = 'SUA_ANON_KEY_SUPABASE_AQUI'; // Ex: eyJhbGciOiJIUzI1Ni...
 
 // Inicializa o cliente Supabase
