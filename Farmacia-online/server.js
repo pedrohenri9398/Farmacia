@@ -6,9 +6,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- Configuração do Supabase ---
-// SUBSTITUA PELAS SUAS CHAVES DO SUPABASE
-const SUPABASE_URL = 'https://vovyubntbeesdwibrdlf.supabase.co'; // Ex: https://your-project-ref.supabase.co
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnl1Ym50YmVlc2R3aWJyZGxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1OTk5ODcsImV4cCI6MjA2ODE3NTk4N30.j0l9wfwuTaX9bOFq8G3dXd1_y3MqYUjQfzZlouavn9s'; // Ex: eyJhbGciOiJIUzI1Ni...
+// SUBSTITUA PELAS SUAS CHAVES DO SUPABASE!
+const SUPABASE_URL = 'SUA_URL_SUPABASE_AQUI'; // Ex: https://your-project-ref.supabase.co
+const SUPABASE_ANON_KEY = 'SUA_ANON_KEY_SUPABASE_AQUI'; // Ex: eyJhbGciOiJIUzI1Ni...
 
 // Inicializa o cliente Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -26,10 +26,9 @@ app.get('/', (req, res) => {
 // Rota para obter todos os produtos do Supabase
 app.get('/api/products', async (req, res) => {
     try {
-        // Usa o cliente Supabase para selecionar todos os produtos da tabela 'products'
         const { data: products, error } = await supabase
-            .from('products') // Nome da sua tabela
-            .select('*'); // Seleciona todas as colunas
+            .from('products') // Nome da sua tabela no Supabase
+            .select('*');
 
         if (error) {
             console.error('Erro ao buscar produtos do Supabase:', error);
@@ -46,12 +45,11 @@ app.get('/api/products', async (req, res) => {
 app.get('/api/products/:id', async (req, res) => {
     try {
         const productId = req.params.id;
-        // Supabase usa 'eq' para igualdade e assume a Primary Key (id)
         const { data: product, error } = await supabase
             .from('products')
             .select('*')
-            .eq('id', productId) // Busca pelo ID
-            .single(); // Espera apenas um resultado
+            .eq('id', productId)
+            .single();
 
         if (error && error.code !== 'PGRST116') { // PGRST116 é "no rows found"
             console.error('Erro ao buscar produto por ID no Supabase:', error);
@@ -74,14 +72,14 @@ app.post('/api/products', async (req, res) => {
     try {
         const { data, error } = await supabase
             .from('products')
-            .insert([req.body]) // Insere o objeto do corpo da requisição
-            .select(); // Retorna o item inserido
+            .insert([req.body])
+            .select();
 
         if (error) {
             console.error('Erro ao adicionar produto ao Supabase:', error);
             return res.status(400).send('Erro ao adicionar produto. Verifique os dados.');
         }
-        res.status(201).json(data[0]); // Retorna o primeiro (e único) item inserido
+        res.status(201).json(data[0]);
     } catch (error) {
         console.error('Erro inesperado na rota POST /api/products:', error);
         res.status(500).send('Erro interno do servidor.');
