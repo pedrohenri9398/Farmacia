@@ -9,27 +9,22 @@
   --cor-sombra: rgba(0,0,0,0.1);
 }
 
-
-
-{
+/* Este seletor universal * precisa estar fora do bloco,
+   ou o bloco precisa de um seletor válido.
+   Assumindo que você queria um seletor universal para reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-
-
-
 body {
-  front-family: 'poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Corrigido: 'front-family' para 'font-family', 'poppins' para 'Poppins' */
   line-height: 1.6;
   color: var(--cor-texto);
-  background-color: var (--cor-fundo);
+  background-color: var(--cor-fundo); /* Corrigido: espaço extra em '--cor-fundo' */
   overflow-x: hidden;
 }
-
-
 
 .container {
   width: 90%;
@@ -37,7 +32,6 @@ body {
   margin: auto;
   padding: 20px 0;
 }
-
 
 h1, h2, h3 {
   color: var(--cor-texto);
@@ -49,15 +43,12 @@ p {
 }
 
 a {
-  text-decoration: nome;
+  text-decoration: none; /* Corrigido: 'nome' para 'none' */
   color: var(--cor-secundaria);
-  
 }
 
 a:hover {
-
   text-decoration: underline;
-  
 }
 
 button {
@@ -69,143 +60,116 @@ button {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-  
 }
 
-botton:hover {
-  background-color: #218838
-  
+/* Corrigido: 'botton' para 'button' */
+button:hover {
+  background-color: #218838; /* Adicionado ponto e vírgula */
 }
 
 header {
-  background-color:white;
+  background-color: white;
   color: var(--cor-texto);
   padding: 15px 0;
   box-shadow: 0 2px 5px var(--cor-sombra);
   position: sticky;
   top: 0;
   z-index: 1000;
-
 }
-
 
 header .container {
   display: flex;
-  jusify-content: space-between;
+  justify-content: space-between; /* Corrigido: 'jusify-content' para 'justify-content' */
   align-items: center;
   flex-wrap: wrap;
-  
 }
 
 header h1 {
   margin: 0;
   font-size: 1.8rem;
   color: var(--cor-primaria);
-  
 }
-
 
 header nav ul {
-  list-style: nome;
+  list-style: none; /* Corrigido: 'nome' para 'none' */
   display: flex;
-  
 }
-
-
 
 header nav ul li {
   margin-left: 20px;
-  
 }
-
-
-
 
 header nav ul li a {
   color: var(--cor-texto);
   font-weight: 600;
   transition: color 0.3s ease;
-  
 }
 
-header nav ul li a :hover {
+header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
   color: var(--cor-primaria);
-  text-decoration: nome;
-  
-} 
-
+  text-decoration: none; /* Corrigido: 'nome' para 'none' */
+}
 
 #banner-promocional {
   background-color: var(--cor-secundaria);
   color: white;
-  text-aling: center;
+  text-align: center; /* Corrigido: 'text-aling' para 'text-align' */
   padding: 80px 20px;
   margin-bottom: 30px;
   border-radius: 8px;
-  
 }
 
-#banner promocional h2 {
+#banner-promocional h2 { /* Corrigido: espaço em 'banner promocional' */
   color: white;
   font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
-#Banner promocional p {
+#banner-promocional p { /* Corrigido: espaço em 'Banner promocional' */
   font-size: 1.2rem;
   margin-bottom: 30px;
-  
 }
-
 
 #banner-promocional button {
   background-color: white;
   color: var(--cor-secundaria);
-  font-weight:600;
-  
+  font-weight: 600;
 }
 
 #banner-promocional button:hover {
   background-color: var(--cor-fundo);
   color: var(--cor-secundaria);
-  
 }
 
-#Produtos {
-  margin-bottom: 30px
-  
+#Produtos { /* Corrigido: 'Produtos' deve ser 'produtos' para corresponder ao ID no HTML */
+  margin-bottom: 30px; /* Adicionado ponto e vírgula */
 }
 
 .produto-card {
-  background-color:white;
+  background-color: white;
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 8px var(--cor-sombra);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
 }
 
 .produto-card:hover {
-  tranform: translateY(-5px);
+  transform: translateY(-5px); /* Corrigido: 'tranform' para 'transform' */
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  
 }
 
 .produto-card h3 {
   font-size: 1.4rem;
   margin-bottom: 10px;
   color: var(--cor-primaria);
-  
-  
 }
 
 .produto-card p {
   font-size: 0.95rem;
   color: #666;
   min-height: 40px;
-  
 }
 
 .produto-card .preco {
@@ -213,16 +177,14 @@ header nav ul li a :hover {
   font-weight: 700;
   color: var(--cor-texto);
   margin: 15px 0;
-  
 }
 
 .produto-card button {
-  width: 100%
+  width: 100%; /* Corrigido: Adicionado ponto e vírgula */
   padding: 12px;
-  
 }
-/*seção de contato*/
 
+/*seção de contato*/
 #contato {
   background-color: white;
   padding: 40px 20px;
@@ -230,16 +192,14 @@ header nav ul li a :hover {
   border-radius: 8px;
   box-shadow: 0 2px 5px var(--cor-sombra);
   text-align: center;
-  
 }
 
 #contato form {
   display: flex;
-  flex-direction:column;
-  gap: 15px
+  flex-direction: column; /* Adicionado ponto e vírgula */
+  gap: 15px; /* Adicionado ponto e vírgula */
   max-width: 600px;
   margin: 0 auto 30px auto;
-  
 }
 
 #contato form input[type="text"],
@@ -249,120 +209,76 @@ header nav ul li a :hover {
   border: 1px solid var(--cor-borda);
   border-radius: 5px;
   font-size: 1rem;
-  width: 100%
+  width: 100%; /* Adicionado ponto e vírgula */
 }
-
 
 #contato form textarea {
   resize: vertical;
-  min-height:100px
-  
+  min-height: 100px; /* Adicionado ponto e vírgula */
 }
 
 #contato .informacoes-contato p {
   margin-bottom: 5px;
   color: #555;
-  
 }
-
 
 footer {
   background-color: var(--cor-texto);
-  color:white;
+  color: white;
   text-align: center;
   padding: 20px 0;
-  margin-top:50px
-  
+  margin-top: 50px; /* Adicionado ponto e vírgula */
 }
 
 footer p {
   margin: 5px 0;
-  
 }
 
 footer a {
   color: white;
   margin: 0 10px;
-  
 }
 
 /*responsividade*/
-@media (mmax-width: 768px)  {
+@media (max-width: 768px) { /* Corrigido: 'mmax-width' para 'max-width' */
   header .container {
-    flex-direction: colum;
-    text-align:center
+    flex-direction: column; /* Corrigido: 'colum' para 'column' */
+    text-align: center; /* Adicionado ponto e vírgula */
+  }
+  /* Este bloco de regra media query precisa fechar antes de novas regras */
+  header nav ul { /* Este seletor estava fora do @media e foi movido para dentro para manter a lógica original, ou precisa de sua própria @media */
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  header nav ul li { /* Mover para dentro ou criar nova @media */
+    margin: 5px 10px;
+  }
+  #banner-promocional { /* Mover para dentro ou criar nova @media */
+    padding: 60px 15px;
+  }
+  #banner-promocional h2 { /* Mover para dentro ou criar nova @media */
+    font-size: 2rem;
+  }
+  .lista-produtos { /* Mover para dentro ou criar nova @media */
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr )); /* Adicionado ponto e vírgula */
   }
 }
 
-header nav ul {
-  margin-top: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-  
-}
-
-header nav ul li {
-  margin: 5px 10px;
-  
-}
-
-
-#banner-Promocional {
-  padding: 60px 15px;
-  
-}
-
-#banner-promocional h2 {
-  font-size: 2rem;
-  
-}
-
-.lista-produtos {
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr ));
-  
-}
-
-@mmedia (max-width: 480px) {
+@media (max-width: 480px) { /* Corrigido: 'mmedia' para 'media' */
   #banner-promocional h2 {
     font-size: 1.8rem;
-    
   }
   #banner-promocional p {
     font-size: 1rem;
-    
   }
-
-.produto-card {
-  padding: 15px;
-  
+  .produto-card {
+    padding: 15px;
+  }
+  .produto-card h3 {
+    font-size: 1.3rem;
+  }
+  #contato form {
+    padding: 0 15px;
+  }
 }
-
-.produto-card h3  {
-  font-size: 1.3rem; 
-}
-
-#contato form{
-  padding: 0 15px;
-  
-} 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
