@@ -19,7 +19,7 @@
   },
  "scripts": {
     "start": "vite",
-    "backend": "node Backend/server.js", // <-- ATUALIZE ESTA LINHA
+    "backend": "node Backend/server.js"
     "test": "echo \"Error: no test specified\" && exit 1"
 },
   "keywords": [],
