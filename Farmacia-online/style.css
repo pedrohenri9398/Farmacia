@@ -9,9 +9,6 @@
   --cor-sombra: rgba(0,0,0,0.1);
 }
 
-/* Este seletor universal * precisa estar fora do bloco,
-   ou o bloco precisa de um seletor válido.
-   Assumindo que você queria um seletor universal para reset */
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +16,10 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Corrigido: 'front-family' para 'font-family', 'poppins' para 'Poppins' */
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--cor-texto);
-  background-color: var(--cor-fundo); /* Corrigido: espaço extra em '--cor-fundo' */
+  background-color: var(--cor-fundo);
   overflow-x: hidden;
 }
 
@@ -43,7 +40,7 @@ p {
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   color: var(--cor-secundaria);
 }
 
@@ -62,9 +59,8 @@ button {
   transition: background-color 0.3s ease;
 }
 
-
 button:hover {
-  background-color: #218838; 
+  background-color: #218838;
 }
 
 header {
@@ -79,7 +75,7 @@ header {
 
 header .container {
   display: flex;
-  justify-content: space-between; /* Corrigido: 'jusify-content' para 'justify-content' */
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -91,7 +87,7 @@ header h1 {
 }
 
 header nav ul {
-  list-style: none; /* Corrigido: 'nome' para 'none' */
+  list-style: none;
   display: flex;
 }
 
@@ -105,27 +101,27 @@ header nav ul li a {
   transition: color 0.3s ease;
 }
 
-header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
+header nav ul li a:hover {
   color: var(--cor-primaria);
-  text-decoration: none; /* Corrigido: 'nome' para 'none' */
+  text-decoration: none;
 }
 
 #banner-promocional {
   background-color: var(--cor-secundaria);
   color: white;
-  text-align: center; /* Corrigido: 'text-aling' para 'text-align' */
+  text-align: center;
   padding: 80px 20px;
   margin-bottom: 30px;
   border-radius: 8px;
 }
 
-#banner-promocional h2 { /* Corrigido: espaço em 'banner promocional' */
+#banner-promocional h2 {
   color: white;
   font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
-#banner-promocional p { /* Corrigido: espaço em 'Banner promocional' */
+#banner-promocional p {
   font-size: 1.2rem;
   margin-bottom: 30px;
 }
@@ -141,8 +137,8 @@ header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
   color: var(--cor-secundaria);
 }
 
-#Produtos { /* Corrigido: 'Produtos' deve ser 'produtos' para corresponder ao ID no HTML */
-  margin-bottom: 30px; /* Adicionado ponto e vírgula */
+#Produtos {
+  margin-bottom: 30px;
 }
 
 .produto-card {
@@ -156,7 +152,7 @@ header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
 }
 
 .produto-card:hover {
-  transform: translateY(-5px); /* Corrigido: 'tranform' para 'transform' */
+  transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
@@ -180,7 +176,7 @@ header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
 }
 
 .produto-card button {
-  width: 100%; /* Corrigido: Adicionado ponto e vírgula */
+  width: 100%;
   padding: 12px;
 }
 
@@ -196,8 +192,8 @@ header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
 
 #contato form {
   display: flex;
-  flex-direction: column; /* Adicionado ponto e vírgula */
-  gap: 15px; /* Adicionado ponto e vírgula */
+  flex-direction: column;
+  gap: 15px;
   max-width: 600px;
   margin: 0 auto 30px auto;
 }
@@ -209,12 +205,12 @@ header nav ul li a:hover { /* Corrigido: removeu o espaço antes de ':' */
   border: 1px solid var(--cor-borda);
   border-radius: 5px;
   font-size: 1rem;
-  width: 100%; /* Adicionado ponto e vírgula */
+  width: 100%;
 }
 
 #contato form textarea {
   resize: vertical;
-  min-height: 100px; /* Adicionado ponto e vírgula */
+  min-height: 100px;
 }
 
 #contato .informacoes-contato p {
@@ -227,7 +223,7 @@ footer {
   color: white;
   text-align: center;
   padding: 20px 0;
-  margin-top: 50px; /* Adicionado ponto e vírgula */
+  margin-top: 50px;
 }
 
 footer p {
@@ -240,32 +236,36 @@ footer a {
 }
 
 /*responsividade*/
-@media (max-width: 768px) { /* Corrigido: 'mmax-width' para 'max-width' */
+@media (max-width: 768px) {
   header .container {
-    flex-direction: column; /* Corrigido: 'colum' para 'column' */
-    text-align: center; /* Adicionado ponto e vírgula */
+    flex-direction: column;
+    text-align: center;
   }
-  /* Este bloco de regra media query precisa fechar antes de novas regras */
-  header nav ul { /* Este seletor estava fora do @media e foi movido para dentro para manter a lógica original, ou precisa de sua própria @media */
+  
+  header nav ul {
     margin-top: 15px;
     flex-wrap: wrap;
     justify-content: center;
   }
-  header nav ul li { /* Mover para dentro ou criar nova @media */
+  
+  header nav ul li {
     margin: 5px 10px;
   }
-  #banner-promocional { /* Mover para dentro ou criar nova @media */
+  
+  #banner-promocional {
     padding: 60px 15px;
   }
-  #banner-promocional h2 { /* Mover para dentro ou criar nova @media */
+  
+  #banner-promocional h2 {
     font-size: 2rem;
   }
-  .lista-produtos { /* Mover para dentro ou criar nova @media */
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr )); /* Adicionado ponto e vírgula */
+  
+  .lista-produtos {
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr ));
   }
 }
 
-@media (max-width: 480px) { /* Corrigido: 'mmedia' para 'media' */
+@media (max-width: 480px) {
   #banner-promocional h2 {
     font-size: 1.8rem;
   }
