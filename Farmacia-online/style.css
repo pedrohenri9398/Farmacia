@@ -43,7 +43,7 @@ p {
 }
 
 a {
-  text-decoration: none; /* Corrigido: 'nome' para 'none' */
+  text-decoration: none; 
   color: var(--cor-secundaria);
 }
 
