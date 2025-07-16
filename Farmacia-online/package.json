@@ -17,11 +17,11 @@
     "tinyglobby": "^0.2.14",
     "vite": "^7.0.4"
   },
- "scripts": {
+  "scripts": {
     "start": "vite",
     "backend": "node Backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-},
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
