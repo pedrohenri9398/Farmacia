@@ -53,7 +53,7 @@ a:hover {
 
 button {
   background-color: var(--cor-primaria);
-  color: black;
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
