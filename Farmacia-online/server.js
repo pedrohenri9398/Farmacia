@@ -46,7 +46,7 @@ app.get('/api/products/:id', async (req, res) => {
     try {
         const productId = req.params.id;
         const { data: product, error } = await supabase
-            .from('products')
+            .from('produtos')
             .select('*')
             .eq('id', productId)
             .single();
