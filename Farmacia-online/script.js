@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         listaProdutosContainer.innerHTML = 'Carregando produtos...';
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/productos`);
+            // CORRIGIDO AQUI: A URL da API do backend é '/api/products'
+            const response = await fetch(`${API_BASE_URL}/api/products`); 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -42,16 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('produto-card');
                     productCard.innerHTML = `
-                        <img src="${product.imageUrl}" alt="${product.name}" style="width:100%; max-width:150px; height:auto; margin-bottom: 10px; border-radius: 5px;">
-                        <h3>${product.name}</h3>
-                        <p>${product.description || 'Produto de alta qualidade para a sua saúde.'}</p>
-                        <p class="preco">R$ ${product.price.toFixed(2).replace('.', ',')}</p>
+                        <img src="${product.imagem_url || 'placeholder.jpg'}" alt="${product.nome}" style="width:100%; max-width:150px; height:auto; margin-bottom: 10px; border-radius: 5px;">
+                        <h3>${product.nome}</h3>
+                        <p>${product.descricao || 'Produto de alta qualidade para a sua saúde.'}</p>
+                        <p class="preco">R$ ${product.preco ? product.preco.toFixed(2).replace('.', ',') : 'N/A'}</p>
                         <button class="adicionar-carrinho" data-id="${product.id}">Adicionar ao Carrinho</button>
                     `;
                     listaProdutosContainer.appendChild(productCard);
                 });
             }
-
 
             // Re-anexa os event listeners aos novos botões gerados dinamicamente
             attachAddToCartListeners();
