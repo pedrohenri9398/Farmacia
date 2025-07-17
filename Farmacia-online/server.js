@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 app.get('/api/products', async (req, res) => {
     try {
         const { data: products, error } = await supabase
-            .from('products') // Nome da sua tabela no Supabase
+            .from('produtos') // <--- CORRIGIDO AQUI: AGORA É 'produtos'
             .select('*');
 
         if (error) {
@@ -46,7 +46,7 @@ app.get('/api/products/:id', async (req, res) => {
     try {
         const productId = req.params.id;
         const { data: product, error } = await supabase
-            .from('produtos')
+            .from('produtos') // JÁ ESTAVA CORRETO: 'produtos'
             .select('*')
             .eq('id', productId)
             .single();
@@ -71,7 +71,7 @@ app.get('/api/products/:id', async (req, res) => {
 app.post('/api/products', async (req, res) => {
     try {
         const { data, error } = await supabase
-            .from('produtos')
+            .from('produtos') // JÁ ESTAVA CORRETO: 'produtos'
             .insert([req.body])
             .select();
 
