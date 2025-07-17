@@ -71,7 +71,7 @@ app.get('/api/products/:id', async (req, res) => {
 app.post('/api/products', async (req, res) => {
     try {
         const { data, error } = await supabase
-            .from('products')
+            .from('produtos')
             .insert([req.body])
             .select();
 
