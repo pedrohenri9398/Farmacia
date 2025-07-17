@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listaProdutosContainer.innerHTML = 'Carregando produtos...';
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/products`);
+            const response = await fetch(`${API_BASE_URL}/api/productos`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
