@@ -19,7 +19,7 @@
   },
 "scripts": {
     "start": "vite",
-    "backend": "node Farmacia-online/backend/server.js",
+    "backend": "node Farmacia-online/Backend/server.js", // <-- MUDE 'backend' para 'Backend' (com 'B' maiúsculo)
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
 },
