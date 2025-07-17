@@ -19,7 +19,7 @@
   },
 "scripts": {
     "start": "vite",
-    "backend": "node Farmacia-online/server.js", // <-- ALTE ESTA LINHA! Removendo o '/Backend'
+    "backend": "node Farmacia-online/server.js",
     "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
 },
