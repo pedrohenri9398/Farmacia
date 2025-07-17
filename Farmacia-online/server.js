@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // --- Configuração do Supabase ---
 // SUBSTITUA PELAS SUAS CHAVES DO SUPABASE!
 const SUPABASE_URL = 'https://vovyubntbeesdwibrdlf.supabase.co'; // Ex: https://your-project-ref.supabase.co
-const SUPABASE_ANON_KEY = 'SUA_ANON_KEY_SUPABASE_AQUI'; // Ex: eyJhbGciOiJIUzI1Ni...
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnl1Ym50YmVlc2R3aWJyZGxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1OTk5ODcsImV4cCI6MjA2ODE3NTk4N30.j0l9wfwuTaX9bOFq8G3dXd1_y3MqYUjQfzZlouavn9s'; // Ex: eyJhbGciOiJIUzI1Ni...
 
 // Inicializa o cliente Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
