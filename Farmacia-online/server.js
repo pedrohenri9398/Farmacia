@@ -5,27 +5,22 @@ const { createClient } = require('@supabase/supabase-js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// --- Configuração do Supabase ---
-// SUBSTITUA PELAS SUAS CHAVES DO SUPABASE!
 const SUPABASE_URL ='https://vovyubntbeesdwibrdlf.supabase.co';
 const SUPABASE_ANON_KEY ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnl1Ym50YmVlc2R3aWJyZGxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1OTk5ODcsImV4cCI6MjA2ODE3NTk4N30.j0l9wfwuTaX9bOFq8G3dXd1_y3MqYUjQfzZlouavn9s';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// --- Middleware ---
 app.use(cors());
 app.use(express.json());
 
-// --- Rotas ---
 
 app.get('/', (req, res) => {
     res.send('Bem-vindo à API da Farmácia Online (Supabase)!');
 });
 
-// Rota para obter todos os produtos do Supabase
 app.get('/api/products', async (req, res) => {
     try {
         const { data: products, error } = await supabase
-            .from('produtos') // Deve ser 'produtos' (minúsculo) conforme sua confirmação
+            .from('produtos') 
             .select('*');
 
         if (error) {
@@ -49,7 +44,7 @@ app.get('/api/products/:id', async (req, res) => {
             .eq('id', productId)
             .single();
 
-        if (error && error.code !== 'PGRST116') { // PGRST116 é "no rows found"
+        if (error && error.code !== 'PGRST116') { 
             console.error('Erro ao buscar produto por ID no Supabase:', error);
             return res.status(500).send('Erro interno do servidor ao buscar produto por ID.');
         }
@@ -83,14 +78,12 @@ app.post('/api/products', async (req, res) => {
     }
 });
 
-// Rota para simular um pedido (mantida, mas futuramente usaria uma tabela 'orders' no Supabase)
 app.post('/api/orders', (req, res) => {
     const order = req.body;
     console.log('Novo pedido recebido (via Supabase):', order);
     res.status(201).json({ message: 'Pedido recebido com sucesso!', orderId: Date.now() });
 });
 
-// --- Inicia o Servidor ---
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
     console.log(`API de produtos disponível em http://localhost:${PORT}/api/products`);
