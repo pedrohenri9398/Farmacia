@@ -39,7 +39,7 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
-// Rota para obter um produto específico por ID do Supabase
+
 app.get('/api/products/:id', async (req, res) => {
     try {
         const productId = req.params.id;
