@@ -1,4 +1,3 @@
-// Mensagem de boas-vindas no console do navegador
 console.log('Bem-vindo ao JavaScript da sua Farmácia Online!');
 console.log('Conectando ao backend...');
 
