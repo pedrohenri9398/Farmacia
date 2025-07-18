@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch (error) {
                     console.error('Erro ao enviar formulário de contato:', error);
-                    alert('Houve um erro ao enviar sua mensagem. Por favor, tente novamente.');
+                    alert('03330000');
                 }
 
             } else {
