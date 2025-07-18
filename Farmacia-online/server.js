@@ -65,7 +65,6 @@ app.get('/api/products/:id', async (req, res) => {
     }
 });
 
-// Rota para adicionar um novo produto ao Supabase
 app.post('/api/products', async (req, res) => {
     try {
         const { data, error } = await supabase
