@@ -131,6 +131,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Chama a função para buscar e exibir os produtos quando a página carrega
     fetchAndDisplayProducts();
 });
