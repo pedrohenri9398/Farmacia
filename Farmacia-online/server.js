@@ -1,4 +1,3 @@
-// Cole este código COMPLETO no seu Farmacia-online/server.js
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
