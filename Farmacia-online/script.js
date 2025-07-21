@@ -1,135 +1,80 @@
-console.log('Bem-vindo ao JavaScript da sua Farmácia Online!');
-console.log('Conectando ao backend...');
+// Farmacia-online/script.js
 
 // URL base do seu backend Node.js
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'http://localhost:3000'; // Não mude esta URL
 
-// 1. Funcionalidade do botão "Ver Produtos" do banner
-document.addEventListener('DOMContentLoaded', () => {
-    const verProdutosBtn = document.querySelector('#banner-promocional button');
-    const secaoProdutos = document.querySelector('#produtos');
+// Função para buscar e exibir produtos
+async function fetchAndDisplayProducts() {
+    // Seleciona o div que conterá a lista de produtos (no index.html ou produtos.html)
+    const listaProdutosDiv = document.querySelector('.lista-produtos');
 
-    if (verProdutosBtn && secaoProdutos) {
-        verProdutosBtn.addEventListener('click', () => {
-            secaoProdutos.scrollIntoView({ behavior: 'smooth' });
-        });
+    // Verifica se o elemento '.lista-produtos' existe na página atual.
+    // Isso evita erros se a função for chamada em uma página que não tem essa div.
+    if (!listaProdutosDiv) {
+        console.warn('Elemento .lista-produtos não encontrado na página atual. Pulando a busca de produtos.');
+        return; // Sai da função se o elemento não existe
     }
 
-    // Função para buscar e exibir produtos do backend
-    async function fetchAndDisplayProducts() {
-        const listaProdutosContainer = document.querySelector('.lista-produtos');
-        if (!listaProdutosContainer) {
-            console.error('Elemento .lista-produtos não encontrado.');
-            return;
+    // Limpa qualquer conteúdo estático e mostra uma mensagem de carregamento
+    listaProdutosDiv.innerHTML = '<h2>Carregando produtos...</h2>';
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/products`);
+        if (!response.ok) {
+            // Se a resposta não for OK (ex: 500 Internal Server Error, 404 Not Found, etc.)
+            const errorText = await response.text(); // Tenta pegar a mensagem de erro do backend
+            throw new Error(`HTTP error! Status: ${response.status}. Mensagem do servidor: ${errorText || 'Sem mensagem'}`);
         }
+        const products = await response.json();
 
-        listaProdutosContainer.innerHTML = 'Carregando produtos...';
+        // Limpa a mensagem de carregamento antes de adicionar os produtos
+        listaProdutosDiv.innerHTML = '';
 
-        try {
-            // CORRIGIDO AQUI: A URL da API do backend é '/api/products'
-            const response = await fetch(`${API_BASE_URL}/api/products`); 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const products = await response.json();
-
-            listaProdutosContainer.innerHTML = ''; // Limpa "Carregando..."
-
-            if (products.length === 0) {
-                listaProdutosContainer.innerHTML = '<p>Nenhum produto encontrado no momento. Adicione produtos no seu Supabase!</p>';
-            } else {
-                products.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('produto-card');
-                    productCard.innerHTML = `
-                        <img src="${product.imagem_url || 'placeholder.jpg'}" alt="${product.nome}" style="width:100%; max-width:150px; height:auto; margin-bottom: 10px; border-radius: 5px;">
+        if (products.length === 0) {
+            listaProdutosDiv.innerHTML = '<p>Nenhum produto encontrado no momento.</p>';
+        } else {
+            products.forEach(product => {
+                const productCard = `
+                    <div class="produto-card">
+                        <img src="${product.imagem_url || 'https://via.placeholder.com/150'}" alt="${product.nome}">
                         <h3>${product.nome}</h3>
-                        <p>${product.descricao || 'Produto de alta qualidade para a sua saúde.'}</p>
-                        <p class="preco">R$ ${product.preco ? product.preco.toFixed(2).replace('.', ',') : 'N/A'}</p>
+                        <p>${product.descricao}</p>
+                        <p class="preco">R$ ${product.preco.toFixed(2).replace('.', ',')}</p>
                         <button class="adicionar-carrinho" data-id="${product.id}">Adicionar ao Carrinho</button>
-                    `;
-                    listaProdutosContainer.appendChild(productCard);
-                });
-            }
-
-            // Re-anexa os event listeners aos novos botões gerados dinamicamente
-            attachAddToCartListeners();
-
-        } catch (error) {
-            console.error('Erro ao buscar produtos:', error);
-            listaProdutosContainer.innerHTML = '<p>Erro ao carregar produtos. Por favor, tente novamente mais tarde.</p>';
+                    </div>
+                `;
+                listaProdutosDiv.innerHTML += productCard;
+            });
         }
+    } catch (error) {
+        console.error('Erro ao buscar produtos:', error); // Loga o erro no console do navegador
+        // Exibe uma mensagem de erro no HTML para o usuário
+        listaProdutosDiv.innerHTML = `<p style="color: red;">Não foi possível carregar os produtos. Erro: ${error.message}. Por favor, verifique o terminal do backend.</p>`;
     }
+}
 
-    // Função para anexar event listeners aos botões de adicionar ao carrinho
-    function attachAddToCartListeners() {
-        const botoesAdicionarCarrinho = document.querySelectorAll('.adicionar-carrinho');
-        const carrinhoLink = document.querySelector('header nav ul li a[href="#carrinho"]');
-        let contadorCarrinho = parseInt(localStorage.getItem('cartCount') || '0', 10);
-        if (carrinhoLink) {
-            carrinhoLink.innerText = `Carrinho (${contadorCarrinho})`;
-        }
-
-        botoesAdicionarCarrinho.forEach(button => {
-            button.removeEventListener('click', handleAddToCart); // Evita duplicação
-            button.addEventListener('click', handleAddToCart);
-        });
-
-        function handleAddToCart(event) {
-            const produtoId = event.target.dataset.id;
-            const nomeProduto = event.target.parentNode.querySelector('h3').innerText;
-
-            contadorCarrinho++;
-            localStorage.setItem('cartCount', contadorCarrinho);
-            if (carrinhoLink) {
-                carrinhoLink.innerText = `Carrinho (${contadorCarrinho})`;
-            }
-
-            console.log(`Produto "${nomeProduto}" (ID: ${produtoId}) adicionado ao carrinho!`);
-            alert(`"${nomeProduto}" adicionado ao carrinho! Total: ${contadorCarrinho} itens.`);
-        }
-    }
-
-    // 3. Funcionalidade básica do formulário de contato
-    const formContato = document.querySelector('#contato form');
-
-    if (formContato) {
-        formContato.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const nome = formContato.querySelector('input[type="text"]').value;
-            const email = formContato.querySelector('input[type="email"]').value;
-            const mensagem = formContato.querySelector('textarea').value;
-
-            if (nome && email && mensagem) {
-                console.log('Tentando enviar mensagem...');
-                try {
-                    // Exemplo de envio de dados para o backend via API
-                    // Lembre-se: Você precisaria criar uma rota /api/contact no seu server.js para isso!
-                    const response = await fetch(`${API_BASE_URL}/api/contact`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ nome, email, mensagem }),
-                    });
-
-                    if (response.ok) {
-                        alert('Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.');
-                        formContato.reset();
-                    } else {
-                        throw new Error(`Erro ao enviar mensagem: ${response.statusText}`);
-                    }
-                } catch (error) {
-                    console.error('Erro ao enviar formulário de contato:', error);
-                    alert('03330000');
-                }
-
-            } else {
-                alert('Por favor, preencha todos os campos do formulário.');
-            }
-        });
-    }
-
+// Lógica para carregar produtos quando a página é completamente carregada
+document.addEventListener('DOMContentLoaded', () => {
+    // Chama a função para buscar e exibir produtos em qualquer página que tenha '.lista-produtos'
     fetchAndDisplayProducts();
+
+    // Listener para o botão "Ver produtos" na página inicial (se houver)
+    const verProdutosButton = document.querySelector('.botao-vermelho');
+    if (verProdutosButton) {
+        verProdutosButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            window.location.href = 'produtos.html'; // Redireciona para a página de produtos
+        });
+    }
+
+    // Listener para os botões "Adicionar ao Carrinho"
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('adicionar-carrinho')) {
+            const productId = event.target.dataset.id;
+            console.log(`Produto ${productId} adicionado ao carrinho! (Simulação)`);
+            // Futuramente, você adicionaria a lógica real do carrinho aqui.
+        }
+    });
+
+    // Outras lógicas para outras seções ou interações de UI podem vir aqui.
 });
