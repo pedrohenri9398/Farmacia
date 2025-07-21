@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Define a porta do servidor
 
 // SUAS CHAVES DO SUPABASE AQUI - COPIE E COLE DA SEÇÃO 'API Keys' DO SEU PROJETO SUPABASE
-const SUPABASE_URL = 'SUA_PROJECT_URL_AQUI'; // Ex: 'https://abcdefghijk.supabase.co'
+const SUPABASE_URL = 'SUA_PROJECT_URL_AQUI'; https://vovyubntbeesdwibrdlf.supabase.co
 const SUPABASE_ANON_KEY = 'SUA_ANON_KEY_AQUI'; // Ex: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdo...';
 
 // Cria o cliente Supabase
