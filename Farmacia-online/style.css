@@ -3,7 +3,7 @@
 :root {
   --cor-primaria: #FF0000;
   --cor-secundaria: #black;
-  --cor-texto:#000000;
+  --cor-texto:#white;
   --cor-fundo:#000000;
   --cor-borda:#000000;
   --cor-sombra: rgba(0,0,0,0.1);
