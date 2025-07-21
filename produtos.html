@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos - Farmácia Padrão</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Farmácia Padrão</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html" class="ativo">Produtos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#carrinho">Carrinho</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Todos os Produtos</h2>
+      <div class="lista-produtos">
+        <div class="produto-card">
+          <h3>Dipirona</h3>
+          <p>Analgésico e antitérmico</p>
+          <p class="preco">R$ 9,99</p>
+          <button class="adicionar-carrinho" data-id="1">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto-card">
+          <h3>Paracetamol</h3>
+          <p>Ideal para febre e dor</p>
+          <p class="preco">R$ 11,90</p>
+          <button class="adicionar-carrinho" data-id="2">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Você pode duplicar esse bloco acima para mais produtos -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Farmácia Padrão</p>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
