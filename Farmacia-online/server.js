@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const SUPABASE_URL ='https://vovyubntbeesdwibrdlf.supabase.co';
-const SUPABASE_ANON_KEY ='uPMfpJM8BYRVYCmSjGTL6I+R8mY0HuP5jE2XZrzfFrXpW+J7RUFQOqEf9UpF7X7Dlk+s6DTrAGvm7+EAiloGXw==';
+const SUPABASE_ANON_KEY ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnl1Ym50YmVlc2R3aWJyZGxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1OTk5ODcsImV4cCI6MjA2ODE3NTk4N30.j0l9wfwuTaX9bOFq8G3dXd1_y3MqYUjQfzZlouavn9s=uPMfpJM8BYRVYCmSjGTL6I+R8mY0HuP5jE2XZrzfFrXpW+J7RUFQOqEf9UpF7X7Dlk+s6DTrAGvm7+EAiloGXw==';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 app.use(cors());
